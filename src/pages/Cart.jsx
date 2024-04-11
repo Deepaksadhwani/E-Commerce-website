@@ -4,9 +4,14 @@ import { CiShoppingCart } from "react-icons/ci";
 import CartItem from "../components/CartItem";
 
 const Cart = () => {
-  const { cartDataArray } = useContext(CartContext);
+  const { cartDataArray, setCartDataArray } = useContext(CartContext);
 
   const totalPrice = cartDataArray.reduce((total, item) => total + item.price, 0);
+  const purchaseHandler = () => {
+      cartDataArray.length = 0;
+      setCartDataArray((prev) => [...prev])
+      alert(`purchased item is ${totalPrice}, thank you for shopping with us 😊`)
+  }
 
   return (
     <div className="max-w-4xl mx-auto mt-8 p-4">
@@ -21,14 +26,14 @@ const Cart = () => {
         </div>
         <div>
           {cartDataArray.map((item, index) => (
-            <CartItem key={index} title={item.title} price={item.price} url={item.url} />
+            <CartItem key={index} title={item.title} price={item.price} url={item.url} index={index} />
           ))}
         </div>
         <div className="flex justify-between items-center mt-8">
           <h3 className="text-lg font-semibold">Total:</h3>
           <h3 className="text-lg font-semibold">${totalPrice.toFixed(2)}</h3>
         </div>
-        <button className="mt-8 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none">
+        <button onClick={purchaseHandler} className="mt-8 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none">
           PURCHASE
         </button>
       </div>
