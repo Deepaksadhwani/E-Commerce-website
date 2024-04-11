@@ -10,7 +10,7 @@ const Cart = () => {
   const purchaseHandler = () => {
       cartDataArray.length = 0;
       setCartDataArray((prev) => [...prev])
-      alert(`purchased item is ${totalPrice}, thank you for shopping with us 😊`)
+      alert(`Total billing amount is ${totalPrice}₹, thank you for shopping with us 😊`)
   }
 
   return (

@@ -6,7 +6,7 @@ const CartItem = ({ title, price, url, index }) => {
 
   const removeHandler = () => {
     cartDataArray.splice(index,1);
-    setCartDataArray((prev) => [...prev])
+    setCartDataArray([]);
   }
 
   return (
