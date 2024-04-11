@@ -9,7 +9,7 @@ const Store = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-400">
+    <div className="flex flex-col items-center justify-center bg-gray-400 pb-40 mb-[-24px] ">
       <h1 className=" p-4 font-serif  text-4xl font-semibold text-gray-700">
         Music
       </h1>

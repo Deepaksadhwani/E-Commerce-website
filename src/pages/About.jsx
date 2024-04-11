@@ -9,6 +9,7 @@ const About = () => {
           src="https://prasadyash2411.github.io/ecom-website/img/Band%20Members.png"
           alt="band-image-log"
           className="h-60 w-60 rounded-full"
+          loading="lazy"
         />
         <p>
           Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
