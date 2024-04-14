@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const Contact = () => {
   const name = useRef(null);
   const email = useRef(null);
   const number = useRef(null);
+  const [isSumbitted, setIstSubmitted] = useState(false);
 
   const addDataHandler = async () => {
     const data = {
@@ -24,13 +25,15 @@ const Contact = () => {
       );
       const responseData = await response.json();
       console.log(responseData);
+      setIstSubmitted(true);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="mb-[-24px] flex min-h-screen items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="mb-[-24px] relative flex min-h-screen items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+     { isSumbitted &&<h1 className="absolute top-0 mt-8 text-2xl text-white font-semibold">✅ Submission Confirmed! Thank You! </h1>}
       <div className="w-full max-w-md">
         <form className="mb-40 rounded bg-white px-8 pb-8 pt-6 shadow-md">
           <div className="mb-4">
