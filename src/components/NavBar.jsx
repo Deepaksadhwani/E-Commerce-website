@@ -24,10 +24,18 @@ const NavBar = () => {
         >
           About
         </NavLink>
+        <NavLink
+          to="/contact"
+          onClick={() => setShouldCartVisible(false)}
+          className={(({isActive}) => isActive ? activeClass : undefined)}
+        >
+          Contact us
+        </NavLink>
+      
       </div>
       {shouldCartVisible && (
         <NavLink to="/cart">
-          <button className="absolute right-16 top-4 flex items-center gap-x-2 text-xl font-medium text-white">
+          <button className="absolute right-16 bg-yellow-600 hover:bg-yellow-700 transition-all duration-300 rounded-full p-1 px-3 top-4 flex items-center gap-x-2 text-xl font-medium text-white">
             <TiShoppingCart />
             Cart
             <span className="text-md font-semibold text-yellow-300 shadow-lg shadow-orange-50">

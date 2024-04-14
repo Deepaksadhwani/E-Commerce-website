@@ -9,7 +9,7 @@ const Card = ({ title, url, price }) => {
   };
 
   return (
-    <div className="mx-auto flex flex-col items-center justify-center space-y-1 rounded-md  bg-white p-4 transition-all duration-200 hover:scale-[1.08] ">
+    <div className="mx-auto flex flex-col items-center justify-center space-y-1 rounded-md  bg-gray-100 p-4 transition-all duration-200 hover:scale-[1.08] ">
       <h3 className="border-b-1 text-xl flex border-gray-700">{title}</h3>
 
       <img src={url} alt="image-logo" />
