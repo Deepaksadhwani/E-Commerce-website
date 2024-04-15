@@ -4,7 +4,8 @@ import { CartContext } from "../contexts/CartContextProvider";
 const Card = ({ title, url, price }) => {
   const { setCartDataArray } = useContext(CartContext);
 
-  const addCartInContextHandler = () => {
+  const addCartInContextHandler = (event) => {
+    event.preventDefault();
     setCartDataArray((prev) => [...prev, { title, url, price }]);
   };
 
