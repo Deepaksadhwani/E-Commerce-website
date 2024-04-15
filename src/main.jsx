@@ -9,6 +9,7 @@ import Home from "./pages/Home.jsx";
 import CartContextProvider from "./contexts/CartContextProvider.jsx";
 import Cart from "./pages/Cart.jsx";
 import Contact from "./pages/Contact.jsx";
+import ProductPage from "./pages/ProductPage.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -18,8 +19,9 @@ const appRouter = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/", element: <Home /> },
       { path: "/store", element: <Store /> },
-      {path: "/cart", element: <Cart/>},
-      {path: "/contact", element: <Contact/>}
+      { path: "/cart", element: <Cart /> },
+      { path: "/contact", element: <Contact /> },
+      { path: "/store/:productId", element: <ProductPage /> },
     ],
   },
 ]);
