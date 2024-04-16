@@ -10,15 +10,17 @@ import CartContextProvider from "./contexts/CartContextProvider.jsx";
 import Cart from "./pages/Cart.jsx";
 import Contact from "./pages/Contact.jsx";
 import ProductPage from "./pages/ProductPage.jsx";
+import Login from "./pages/Login.jsx";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {path: "/login", element:<Login/>},
       { path: "/about", element: <About /> },
-      { path: "/", element: <Home /> },
-      { path: "/store", element: <Store /> },
+      { path: "/home", element: <Home /> },
+      { path: "/", element: <Store /> },
       { path: "/cart", element: <Cart /> },
       { path: "/contact", element: <Contact /> },
       { path: "/store/:productId", element: <ProductPage /> },

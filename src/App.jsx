@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./layout/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./layout/Footer";
+import Login from "./pages/Login";
 
 const App = () => {
-  return (
+  const [isLogIn, setIsLogIn] = useState(true);
+  return isLogIn ? (
+    <Login onAddLogin={setIsLogIn} />
+  ) : (
     <div>
       <Header />
-      <Outlet/>
-      <Footer/>
+      <Outlet />
+      <Footer />
     </div>
   );
 };

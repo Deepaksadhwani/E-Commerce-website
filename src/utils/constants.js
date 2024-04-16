@@ -50,3 +50,6 @@ export const productsArr = [
     imageUrl: "https://www.jeanswest.com.au/dw/image/v2/BDXX_PRD/on/demandware.static/-/Sites-jeanswest-master-catalog/default/dwa357d828/images/MSO-13501/MSO-13501_01_IM_01_Merrick_Chino_Short_Stone.jpg?sw=488&sh=652",
   },
 ];
+
+
+export const API_KEY = "AIzaSyBvxV-KzJD5h2_F7XOq4dDRaoAJH3NPNFY";
