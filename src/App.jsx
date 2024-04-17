@@ -4,10 +4,11 @@ import { Outlet } from "react-router-dom";
 import Footer from "./layout/Footer";
 import Login from "./pages/Login";
 
+
 const App = () => {
-  const [isLogIn, setIsLogIn] = useState(true);
-  return isLogIn ? (
-    <Login onAddLogin={setIsLogIn} />
+  const [showLoginInPage, setShowLoginInPage] = useState(true);
+  return showLoginInPage ? (
+    <Login onShowPage={setShowLoginInPage} />
   ) : (
     <div>
       <Header />

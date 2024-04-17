@@ -52,4 +52,3 @@ export const productsArr = [
 ];
 
 
-export const API_KEY = "AIzaSyBvxV-KzJD5h2_F7XOq4dDRaoAJH3NPNFY";

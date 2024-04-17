@@ -14,9 +14,9 @@ const firebaseConfig = {
   storageBucket: "e-commerce-website-portal.appspot.com",
   messagingSenderId: "210747913893",
   appId: "1:210747913893:web:f23e732f012addc24dff4c",
-  measurementId: "G-3RB9V3Z1DG"
+  measurementId: "G-3RB9V3Z1DG",
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
