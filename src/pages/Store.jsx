@@ -5,11 +5,9 @@ import { Link } from "react-router-dom";
 
 const Store = () => {
   return (
-    <div className="mb-[-24px] flex flex-col items-center justify-center bg-white pb-40 ">
-      <h1 className=" p-4 font-serif  text-4xl font-semibold text-gray-700">
-        Music
-      </h1>
-      <div className="  mt-10 grid grid-cols-2 gap-x-40 gap-y-20">
+    <div className="mb-[-24px] flex flex-col items-center justify-center bg-blue-300 pb-40 ">
+     
+      <div className="  mt-10 grid grid-cols-4 gap-x-10 gap-y-10">
         {productsArr.map((item, index) => (
           <Link to={`/store/${index}`}>
             <Card

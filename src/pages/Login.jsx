@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from "react";
 import { checkValidaData } from "../utils/validate";
 import { CartContext } from "../contexts/CartContextProvider";
 
-const Login = ({ onShowPage }) => {
+const Login = () => {
   const [isSignIn, setIsSign] = useState(true);
   const [error, setError] = useState(true);
   const name = useRef(null);
@@ -63,14 +63,12 @@ const Login = ({ onShowPage }) => {
       );
       const data = await response.json();
       if (response.ok) {
-        console.log(data);
+        loginHandler(data.idToken);
       } else {
         // show mortal
         setError(data.error.message);
         console.log(data);
       }
-      loginHandler(data.idToken);
-      onShowPage(prev => !prev)
     }
   };
 
