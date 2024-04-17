@@ -75,7 +75,7 @@ const Login = () => {
   return (
     <div className="relative">
       <img
-        src="https://i.postimg.cc/wBX7jCR7/Designer.png"
+        src="https://i.postimg.cc/pXRcKXBf/Designer-1.jpg"
         className="absolute h-full w-full object-cover"
         alt=""
       />
