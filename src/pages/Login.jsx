@@ -1,20 +1,14 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { checkValidaData } from "../utils/validate";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { app } from "../utils/firebase";
+import { CartContext } from "../contexts/CartContextProvider";
 
-const auth = getAuth(app);
-
-const Login = ({onShowPage}) => {
+const Login = ({ onShowPage }) => {
   const [isSignIn, setIsSign] = useState(true);
   const [error, setError] = useState(true);
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+  const { loginHandler } = useContext(CartContext);
 
   const toggleSignInForm = () => {
     setIsSign((prev) => !prev);
@@ -27,34 +21,56 @@ const Login = ({onShowPage}) => {
     const message = checkValidaData(nameValue, emailValue, passwordValue);
     setError(message);
     if (message) return;
+
     if (!isSignIn) {
-      // SignUp User Account
-      try {
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          emailValue,
-          passwordValue,
-        );
-        onShowPage(prev => !prev);
-        console.log(userCredential);
-      } catch (error) {
-        console.log(error);
-        setError(error.message);
+      const response = await fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBvxV-KzJD5h2_F7XOq4dDRaoAJH3NPNFY",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: emailValue,
+            password: passwordValue,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        //
+      } else {
+        // show mortal
+        setError(data.error.message);
+        console.log(data);
       }
     } else {
-      // SignIn User Account
-      try {
-        const userCredential = await signInWithEmailAndPassword(
-          auth,
-          emailValue,
-          passwordValue,
-        );
-        onShowPage(prev => !prev);
-        console.log(userCredential);
-      } catch (error) {
-        console.log(error);
-        setError(error.message);
+      const response = await fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBvxV-KzJD5h2_F7XOq4dDRaoAJH3NPNFY",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: emailValue,
+            password: passwordValue,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      const data = await response.json();
+      if (response.ok) {
+        console.log(data);
+      } else {
+        // show mortal
+        setError(data.error.message);
+        console.log(data);
       }
+      loginHandler(data.idToken);
+      onShowPage(prev => !prev)
     }
   };
 
