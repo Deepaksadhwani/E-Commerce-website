@@ -11,13 +11,13 @@ import Cart from "./pages/Cart.jsx";
 import Contact from "./pages/Contact.jsx";
 import ProductPage from "./pages/ProductPage.jsx";
 import Login from "./pages/Login.jsx";
+import ForgetPassword from "./components/ForgetPassword.jsx";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      {path: "/login", element:<Login/>},
       { path: "/about", element: <About /> },
       { path: "/", element: <Home /> },
       { path: "/store", element: <Store /> },
@@ -26,6 +26,11 @@ const appRouter = createBrowserRouter([
       { path: "/store/:productId", element: <ProductPage /> },
     ],
   },
+  {
+    path: "/resetpassword",
+    element: <ForgetPassword />,
+  },
+  { path: "/login", element: <Login /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

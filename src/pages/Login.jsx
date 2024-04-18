@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import { checkValidaData } from "../utils/validate";
+import { checkValidData } from "../utils/validate";
 import { CartContext } from "../contexts/CartContextProvider";
 
 const Login = () => {
@@ -18,7 +18,7 @@ const Login = () => {
     const nameValue = name?.current?.value;
     const emailValue = email.current.value;
     const passwordValue = password.current.value;
-    const message = checkValidaData(nameValue, emailValue, passwordValue);
+    const message = checkValidData(nameValue, emailValue, passwordValue);
     setError(message);
     if (message) return;
 
@@ -39,8 +39,10 @@ const Login = () => {
       );
       const data = await response.json();
       console.log(data);
+      console.log(data);
       if (response.ok) {
-        //
+        loginHandler(data.idToken);
+
       } else {
         // show mortal
         setError(data.error.message);
@@ -71,6 +73,8 @@ const Login = () => {
       }
     }
   };
+
+  const ForgetPasswordHandler = () => {};
 
   return (
     <div className="relative">
@@ -119,6 +123,7 @@ const Login = () => {
               ? "New to Store ? Sign Up Now"
               : "Already registered? Sign In Now."}
           </p>
+      
         </div>
       </div>
     </div>
