@@ -79,7 +79,6 @@ const Login = () => {
     }
   };
 
-  const ForgetPasswordHandler = () => {};
 
   return (
     <div className="relative">

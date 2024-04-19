@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "./layout/Footer";
 import Login from "./pages/Login";
 import { CartContext } from "./contexts/CartContextProvider";
+import Shimmer from "./components/Shimmer";
 
 const App = () => {
   const { userIsLoggedIn } = useContext(CartContext);
