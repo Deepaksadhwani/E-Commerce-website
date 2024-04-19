@@ -15,7 +15,7 @@ const App = () => {
       <Footer />
     </div>
   ) : (
-    <Login/>
+    <Login />
   );
 };
 

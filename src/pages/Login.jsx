@@ -41,8 +41,10 @@ const Login = () => {
       console.log(data);
       console.log(data);
       if (response.ok) {
-        loginHandler(data.idToken);
-
+        const expirationTime = new Date(
+          new Date().getTime() + +data.expiresIn * 1000,
+        );
+        loginHandler(data.idToken, expirationTime.toISOString());
       } else {
         // show mortal
         setError(data.error.message);
@@ -65,7 +67,10 @@ const Login = () => {
       );
       const data = await response.json();
       if (response.ok) {
-        loginHandler(data.idToken);
+        const expirationTime = new Date(
+          new Date().getTime() + +data.expiresIn * 1000,
+        );
+        loginHandler(data.idToken, expirationTime.toISOString());
       } else {
         // show mortal
         setError(data.error.message);
@@ -123,7 +128,6 @@ const Login = () => {
               ? "New to Store ? Sign Up Now"
               : "Already registered? Sign In Now."}
           </p>
-      
         </div>
       </div>
     </div>

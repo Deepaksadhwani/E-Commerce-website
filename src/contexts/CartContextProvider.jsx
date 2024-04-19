@@ -4,15 +4,28 @@ export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
   const [cartDataArray, setCartDataArray] = useState([]);
-  const [token, setToken] = useState(null);
+  const initialToken = localStorage.getItem("token");
+  const [token, setToken] = useState(initialToken);
 
   const userIsLoggedIn = !!token;
 
-  const loginHandler = (token) => {
-    setToken(token);
+  const calculateRemainingTime = (expirationTime) => {
+    const currentTime = new Date().getTime();
+    const adjExpirationTime = new Date(expirationTime).getTime();
+    const remainingDuration = adjExpirationTime - currentTime;
+    return remainingDuration;
   };
+
   const logoutHandler = () => {
     setToken(null);
+    localStorage.removeItem("token");
+  };
+
+  const loginHandler = (token, expirationTime) => {
+    setToken(token);
+    localStorage.setItem("token", token);
+    const remainingTime = calculateRemainingTime(expirationTime);
+    setTimeout(logoutHandler, 60000 * 5);
   };
 
   const data = {
