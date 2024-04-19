@@ -4,10 +4,13 @@ import { CartContext } from "../contexts/CartContextProvider";
 const CartItem = ({ title, price, url, index }) => {
   const { cartDataArray, setCartDataArray } = useContext(CartContext);
 
+  console.log("cartDataArray in CartItem:", cartDataArray);
+
   const removeHandler = () => {
     cartDataArray.splice(index,1);
     setCartDataArray((prev) => [...prev]);
   }
+
 
   return (
     <div className="mb-4 flex items-center justify-between rounded-lg border border-gray-200 p-4 shadow-md">
