@@ -3,7 +3,10 @@ import React, { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-  const [cartDataArray, setCartDataArray] = useState([]);
+  const localStorageData = JSON.parse(localStorage.getItem("card"));
+  const [cartDataArray, setCartDataArray] = useState(
+    localStorageData ? [localStorageData] : [],
+  );
   const initialToken = localStorage.getItem("token");
   const [token, setToken] = useState(initialToken);
 

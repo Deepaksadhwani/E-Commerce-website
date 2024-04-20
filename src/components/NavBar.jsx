@@ -4,8 +4,7 @@ import { CartContext } from "../contexts/CartContextProvider";
 import { TiShoppingCart } from "react-icons/ti";
 
 const NavBar = () => {
-  const [shouldCartVisible, setShouldCartVisible] = useState(false);
-  const { cartDataArray } = useContext(CartContext);
+  const { cartDataArray, setCartDataArray} = useContext(CartContext);
   const { userIsLoggedIn, logoutHandler } = useContext(CartContext);
   const activeClass = "text-yellow-300";
 
@@ -14,28 +13,28 @@ const NavBar = () => {
       <div className="flex w-3/12 justify-evenly text-xl font-medium text-white">
         <NavLink
           to="/"
-          onClick={() => setShouldCartVisible(false)}
+        
           className={({ isActive }) => (isActive ? activeClass : undefined)}
         >
           Home
         </NavLink>
         <NavLink
           to="/store"
-          onClick={() => setShouldCartVisible(true)}
+   
           className={({ isActive }) => (isActive ? activeClass : undefined)}
         >
           Store
         </NavLink>
         <NavLink
           to="/about"
-          onClick={() => setShouldCartVisible(false)}
+         
           className={({ isActive }) => (isActive ? activeClass : undefined)}
         >
           About
         </NavLink>
         <NavLink
           to="/contact"
-          onClick={() => setShouldCartVisible(false)}
+
           className={({ isActive }) => (isActive ? activeClass : undefined)}
         >
           Contact us
@@ -52,8 +51,8 @@ const NavBar = () => {
           Logout
         </button>
       )}
-      {shouldCartVisible && (
-        <NavLink to="/cart">
+      (
+        <NavLink to="/cart" onClick={()=> setCartDataArray((prev) => [...prev])} >
           <button className="absolute right-[278px] top-3 flex items-center gap-x-2 rounded-lg bg-yellow-600 py-[6px] px-2 text-xl font-medium text-white transition-all duration-300 hover:bg-yellow-700">
             <TiShoppingCart />
             Cart
@@ -62,7 +61,7 @@ const NavBar = () => {
             </span>
           </button>
         </NavLink>
-      )}
+      )
     </div>
   );
 };
